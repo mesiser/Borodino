@@ -11,6 +11,13 @@ class GalleryViewController: UIViewController {
 
     var collectionView: UICollectionView! = nil
     
+    let sampleData = [GalleryModel(image: UIImage(named: K.ImagesTitle.firstImage), description: "Памятник 1-му и 19-му Егерским полкам"),
+                      GalleryModel(image: UIImage(named: K.ImagesTitle.secondImage), description: "Памятник 2-й конной батарее лейб-гвардии Артиллерийской бригады капитана А. Ф. Ралля"),
+                      GalleryModel(image: UIImage(named: K.ImagesTitle.thirdImage), description: "Памятник лейб-гвардии Казачьему полку"),
+                      GalleryModel(image: UIImage(named: K.ImagesTitle.fourthImage), description: "Памятник 7-й пехотной дивизии генерала П. М. Капцевича"),
+                      GalleryModel(image: UIImage(named: K.ImagesTitle.fifthImage), description: "Памятник Нежинскому драгунскому полку")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,13 +74,13 @@ class GalleryViewController: UIViewController {
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return sampleData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath) as! GalleryCell
         
-        cell.backgroundColor = .green
+        cell.galleryImageView.image = sampleData[indexPath.item].image
         return cell
     }
 }

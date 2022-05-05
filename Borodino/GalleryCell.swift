@@ -11,8 +11,8 @@ class GalleryCell: UICollectionViewCell {
     
     static let galleryIDCell = K.gallery_ID_cell
     
-    private let galleryImageView = UIImageView()
-    private let titleLabel = UILabel()
+    let galleryImageView = UIImageView()
+    let titleLabel = UILabel()
     
     override func prepareForReuse() {
         super.prepareForReuse()
