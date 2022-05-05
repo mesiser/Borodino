@@ -14,29 +14,37 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        settingsNavController()
+        settingsNavigationBar()
+        createCollectionView()
         
     }
 
-    private func settingsNavController() {
+    private func settingsNavigationBar() {
         navigationItem.title = K.NavControllerTitle.gallery_title
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.darkText]
-        navigationController?.navigationBar.barTintColor = .navigationControllerColor()
-
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+       
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
     
     // Setup CollectionView
     private func createCollectionView() {
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+       
+        collectionView.backgroundColor = .white
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.gallery_ID_cell)
+        collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: K.gallery_ID_cell)
         
         setupCollectionViewConstraints()
         
@@ -63,9 +71,9 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath) as! GalleryCell
         
-        cell.backgroundColor = .yellow
+        cell.backgroundColor = .green
         return cell
     }
 }
@@ -73,4 +81,15 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
 // MARK: CollectionViewDelegateFlowLayout
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = view.frame.width - 2
+        
+        return CGSize(width: width, height: 250)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
 }
