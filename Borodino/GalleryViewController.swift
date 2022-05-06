@@ -29,13 +29,7 @@ class GalleryViewController: UIViewController {
     private func settingsNavigationBar() {
         navigationItem.title = K.NavControllerTitle.gallery_title
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-       
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
     }
     
     // Setup CollectionView
@@ -81,6 +75,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath) as! GalleryCell
         
         cell.galleryImageView.image = sampleData[indexPath.item].image
+        cell.titleLabel.text = sampleData[indexPath.item].description
         return cell
     }
 }
@@ -90,7 +85,7 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = view.frame.width - 2
+        let width = view.frame.width
         
         return CGSize(width: width, height: 250)
     }

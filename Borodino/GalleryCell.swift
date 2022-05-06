@@ -12,6 +12,7 @@ class GalleryCell: UICollectionViewCell {
     static let galleryIDCell = K.gallery_ID_cell
     
     let galleryImageView = UIImageView()
+    let backView = UIView()
     let titleLabel = UILabel()
     
     override func prepareForReuse() {
@@ -32,6 +33,8 @@ class GalleryCell: UICollectionViewCell {
         super.layoutSubviews()
         
         createGalleryCellView()
+        createBackView()
+        createTitleLabel()
     }
     
     //MARK: Setup UI elements
@@ -54,6 +57,54 @@ class GalleryCell: UICollectionViewCell {
             galleryImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
         ])
+    }
+    
+    // backView
+    private func createBackView() {
+        
+        galleryImageView.addSubview(backView)
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        backView.clipsToBounds = true
+        backView.backgroundColor = .clear
+        setupConstraintsForBackView()
+    
+    }
+    
+    private func setupConstraintsForBackView() {
+        
+        NSLayoutConstraint.activate([
+            backView.leadingAnchor.constraint(equalTo: galleryImageView.leadingAnchor, constant: 2),
+            backView.trailingAnchor.constraint(equalTo: galleryImageView.trailingAnchor, constant: -2),
+            backView.bottomAnchor.constraint(equalTo: galleryImageView.bottomAnchor, constant: 1),
+            backView.heightAnchor.constraint(equalToConstant: 70)
+        
+        ])
+        
+    }
+    
+    // titleLabel
+    private func createTitleLabel() {
+        backView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = .white
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont(name: "Avenir Roman", size: 15)
+        
+        setupConstraintsForTitleView()
+    }
+    
+    private func setupConstraintsForTitleView() {
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: backView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: backView.bottomAnchor)
+        
+        ])
+        
+        
     }
     
 }
