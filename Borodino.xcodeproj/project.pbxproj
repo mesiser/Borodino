@@ -19,6 +19,9 @@
 		D0E002492822D199002B219F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E002482822D199002B219F /* Constant.swift */; };
 		D0E0024B2822D261002B219F /* UIColor Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0024A2822D261002B219F /* UIColor Extention.swift */; };
 		D0E0024E2822D7CD002B219F /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E0024D2822D7CD002B219F /* GalleryCell.swift */; };
+		D0EFAFB7282902F5002537B4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EFAFB6282902F5002537B4 /* MainTabBarController.swift */; };
+		D0EFAFB928290343002537B4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EFAFB828290343002537B4 /* MapViewController.swift */; };
+		D0EFAFBB28290352002537B4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EFAFBA28290352002537B4 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		D0E002482822D199002B219F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D0E0024A2822D261002B219F /* UIColor Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor Extention.swift"; sourceTree = "<group>"; };
 		D0E0024D2822D7CD002B219F /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		D0EFAFB6282902F5002537B4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		D0EFAFB828290343002537B4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D0EFAFBA28290352002537B4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,17 +83,11 @@
 		D0E002332822B782002B219F /* Borodino */ = {
 			isa = PBXGroup;
 			children = (
-				D0E002342822B782002B219F /* AppDelegate.swift */,
-				D0E002362822B782002B219F /* SceneDelegate.swift */,
+				D0EFAFB32829024A002537B4 /* Other */,
+				D0EFAFB428290273002537B4 /* Controllers */,
+				D0EFAFB5282902A1002537B4 /* Views */,
 				D0B5E0F72823D397002BAD17 /* Models */,
-				D0E002382822B782002B219F /* GalleryViewController.swift */,
-				D090ED392824E2FE00BFB0B4 /* PublicationViewController.swift */,
-				D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */,
-				D0E0024D2822D7CD002B219F /* GalleryCell.swift */,
 				D0E0024C2822D26E002B219F /* Utils */,
-				D0E002482822D199002B219F /* Constant.swift */,
-				D0E0023D2822B78C002B219F /* Assets.xcassets */,
-				D0E0023F2822B78C002B219F /* LaunchScreen.storyboard */,
 				D0E002422822B78C002B219F /* Info.plist */,
 			);
 			path = Borodino;
@@ -96,9 +96,42 @@
 		D0E0024C2822D26E002B219F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D0E002482822D199002B219F /* Constant.swift */,
 				D0E0024A2822D261002B219F /* UIColor Extention.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		D0EFAFB32829024A002537B4 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D0E002342822B782002B219F /* AppDelegate.swift */,
+				D0E002362822B782002B219F /* SceneDelegate.swift */,
+				D0E0023D2822B78C002B219F /* Assets.xcassets */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		D0EFAFB428290273002537B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0EFAFB6282902F5002537B4 /* MainTabBarController.swift */,
+				D090ED392824E2FE00BFB0B4 /* PublicationViewController.swift */,
+				D0E002382822B782002B219F /* GalleryViewController.swift */,
+				D0EFAFB828290343002537B4 /* MapViewController.swift */,
+				D0EFAFBA28290352002537B4 /* InfoViewController.swift */,
+				D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */,
+				D0E0024D2822D7CD002B219F /* GalleryCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D0EFAFB5282902A1002537B4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0E0023F2822B78C002B219F /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,11 +206,14 @@
 			files = (
 				D090ED3E2824E70700BFB0B4 /* PublicationModel.swift in Sources */,
 				D0E0024E2822D7CD002B219F /* GalleryCell.swift in Sources */,
+				D0EFAFB7282902F5002537B4 /* MainTabBarController.swift in Sources */,
 				D0E002392822B782002B219F /* GalleryViewController.swift in Sources */,
 				D0E0024B2822D261002B219F /* UIColor Extention.swift in Sources */,
 				D090ED3A2824E2FE00BFB0B4 /* PublicationViewController.swift in Sources */,
 				D0B5E0F92823D3B0002BAD17 /* GalleryModel.swift in Sources */,
+				D0EFAFB928290343002537B4 /* MapViewController.swift in Sources */,
 				D0E002352822B782002B219F /* AppDelegate.swift in Sources */,
+				D0EFAFBB28290352002537B4 /* InfoViewController.swift in Sources */,
 				D0E002372822B782002B219F /* SceneDelegate.swift in Sources */,
 				D0E002492822D199002B219F /* Constant.swift in Sources */,
 				D090ED3C2824E5C100BFB0B4 /* PublicationCell.swift in Sources */,

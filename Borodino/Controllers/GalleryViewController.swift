@@ -28,7 +28,7 @@ class GalleryViewController: UIViewController {
 
     private func settingsNavigationBar() {
         navigationItem.title = K.NavControllerTitle.gallery_title
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
         
     }
     

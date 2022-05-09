@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct K {
     
@@ -14,8 +15,15 @@ struct K {
     
     struct NavControllerTitle {
         static let gallery_title = "Галерея"
-        static let description_of_publication_title = "Описание"
         static let map_title = "Карта"
+        static let info_title = "Info"
+        static let description_of_publication_title = "Описание"
+    }
+    
+    struct tabBarImageTitles {
+        static let gallery_controller = UIImage(systemName: "photo.on.rectangle.angled")
+        static let map_contoller = UIImage(systemName: "map.fill")
+        static let info_controller = UIImage(systemName: "info.circle.fill")
     }
     
     struct ImagesTitle {

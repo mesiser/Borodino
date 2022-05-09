@@ -9,11 +9,20 @@ import UIKit
 
 class PublicationViewController: UIViewController {
     
-    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+    let tableView = UITableView.init(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    private func settingsNavigationBar() {
+        navigationItem.title = K.NavControllerTitle.gallery_title
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
     
     private func createTableView() {
@@ -27,6 +36,7 @@ class PublicationViewController: UIViewController {
         setupConstraintsForTableView()
         
         tableView.register(PublicationCell.self, forCellReuseIdentifier: K.publication_ID_cell)
+        tableView.frame = view.bounds
     }
     
     private func setupConstraintsForTableView() {
@@ -43,10 +53,13 @@ class PublicationViewController: UIViewController {
 extension PublicationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.publication_ID_cell, for: indexPath) as! PublicationCell
+        
+        
+        return cell
     }
     
     

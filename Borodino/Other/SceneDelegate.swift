@@ -20,9 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
-        let controller = GalleryViewController()
-        let navController = UINavigationController(rootViewController: controller)
-        window?.rootViewController = navController
+//
+//        let controller = GalleryViewController()
+//        let navController = UINavigationController(rootViewController: controller)
+//        window?.rootViewController = navController
+        
+        let controller = MainTabBarController()
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
+        
         
     }
 

@@ -89,7 +89,7 @@ class GalleryCell: UICollectionViewCell {
         titleLabel.textAlignment = .left
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont(name: "Avenir Roman", size: 15)
+        titleLabel.font = UIFont(name: "Avenir", size: 15)
         
         setupConstraintsForTitleView()
     }
