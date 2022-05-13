@@ -30,6 +30,13 @@ class GalleryViewController: UIViewController {
         navigationItem.title = K.NavControllerTitle.gallery_title
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
         
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: K.ImagesTitle.titleImage)?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        //navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
     
     // Setup CollectionView

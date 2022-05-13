@@ -28,7 +28,7 @@ struct K {
     
     struct ImagesTitle {
         
-        static let titleImage = "titleImage"
+        static let titleImage = "title_image_pmva"
         static let firstImage = "1_eg_plk_1-19"
         static let secondImage = "2_art_brig"
         static let thirdImage = "3_kaz_gv"

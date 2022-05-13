@@ -25,9 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let navController = UINavigationController(rootViewController: controller)
 //        window?.rootViewController = navController
         
-        let controller = MainTabBarController()
-        window?.rootViewController = controller
-        window?.makeKeyAndVisible()
+        let controller = PublicationViewController()
+        let navController = UINavigationController(rootViewController: controller)
+        window?.rootViewController = navController
+        
         
         
     }
