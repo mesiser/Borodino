@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let navController = UINavigationController(rootViewController: controller)
 //        window?.rootViewController = navController
         
-        let controller = PublicationViewController()
+        let controller = GalleryViewController()
         let navController = UINavigationController(rootViewController: controller)
         window?.rootViewController = navController
         

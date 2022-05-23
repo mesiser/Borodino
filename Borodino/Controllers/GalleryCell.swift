@@ -37,6 +37,8 @@ class GalleryCell: UICollectionViewCell {
         createTitleLabel()
     }
     
+    
+    
     //MARK: Setup UI elements
     
     private func createGalleryCellView() {
@@ -82,7 +84,7 @@ class GalleryCell: UICollectionViewCell {
         
     }
     
-    // titleLabel
+
     private func createTitleLabel() {
         backView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

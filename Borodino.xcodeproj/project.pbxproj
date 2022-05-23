@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D090ED3A2824E2FE00BFB0B4 /* PublicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED392824E2FE00BFB0B4 /* PublicationViewController.swift */; };
+		D090ED3A2824E2FE00BFB0B4 /* MonumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */; };
 		D090ED3C2824E5C100BFB0B4 /* PublicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */; };
 		D090ED3E2824E70700BFB0B4 /* PublicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED3D2824E70700BFB0B4 /* PublicationModel.swift */; };
 		D0B5E0F92823D3B0002BAD17 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5E0F82823D3B0002BAD17 /* GalleryModel.swift */; };
+		D0D41074283B9EC800479D4A /* monuments.json in Resources */ = {isa = PBXBuildFile; fileRef = D0D41073283B9EC800479D4A /* monuments.json */; };
+		D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41076283BA24300479D4A /* Bundle-Decodable.swift */; };
+		D0D41079283BA48900479D4A /* MonumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41078283BA48900479D4A /* MonumentModel.swift */; };
 		D0E002352822B782002B219F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E002342822B782002B219F /* AppDelegate.swift */; };
 		D0E002372822B782002B219F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E002362822B782002B219F /* SceneDelegate.swift */; };
 		D0E002392822B782002B219F /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E002382822B782002B219F /* GalleryViewController.swift */; };
@@ -25,10 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D090ED392824E2FE00BFB0B4 /* PublicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationViewController.swift; sourceTree = "<group>"; };
+		D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentViewController.swift; sourceTree = "<group>"; };
 		D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationCell.swift; sourceTree = "<group>"; };
 		D090ED3D2824E70700BFB0B4 /* PublicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationModel.swift; sourceTree = "<group>"; };
 		D0B5E0F82823D3B0002BAD17 /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
+		D0D41073283B9EC800479D4A /* monuments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = monuments.json; sourceTree = "<group>"; };
+		D0D41076283BA24300479D4A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		D0D41078283BA48900479D4A /* MonumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentModel.swift; sourceTree = "<group>"; };
 		D0E002312822B782002B219F /* Borodino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Borodino.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E002342822B782002B219F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E002362822B782002B219F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,9 +65,19 @@
 			isa = PBXGroup;
 			children = (
 				D0B5E0F82823D3B0002BAD17 /* GalleryModel.swift */,
+				D0D41078283BA48900479D4A /* MonumentModel.swift */,
 				D090ED3D2824E70700BFB0B4 /* PublicationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D0D41072283B9E9400479D4A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0E0023D2822B78C002B219F /* Assets.xcassets */,
+				D0D41073283B9EC800479D4A /* monuments.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D0E002282822B782002B219F = {
@@ -88,6 +104,7 @@
 				D0EFAFB5282902A1002537B4 /* Views */,
 				D0B5E0F72823D397002BAD17 /* Models */,
 				D0E0024C2822D26E002B219F /* Utils */,
+				D0D41072283B9E9400479D4A /* Resources */,
 				D0E002422822B78C002B219F /* Info.plist */,
 			);
 			path = Borodino;
@@ -98,6 +115,7 @@
 			children = (
 				D0E002482822D199002B219F /* Constant.swift */,
 				D0E0024A2822D261002B219F /* UIColor Extention.swift */,
+				D0D41076283BA24300479D4A /* Bundle-Decodable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -107,7 +125,6 @@
 			children = (
 				D0E002342822B782002B219F /* AppDelegate.swift */,
 				D0E002362822B782002B219F /* SceneDelegate.swift */,
-				D0E0023D2822B78C002B219F /* Assets.xcassets */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -116,8 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				D0EFAFB6282902F5002537B4 /* MainTabBarController.swift */,
-				D090ED392824E2FE00BFB0B4 /* PublicationViewController.swift */,
 				D0E002382822B782002B219F /* GalleryViewController.swift */,
+				D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */,
 				D0EFAFB828290343002537B4 /* MapViewController.swift */,
 				D0EFAFBA28290352002537B4 /* InfoViewController.swift */,
 				D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */,
@@ -194,6 +211,7 @@
 			files = (
 				D0E002412822B78C002B219F /* LaunchScreen.storyboard in Resources */,
 				D0E0023E2822B78C002B219F /* Assets.xcassets in Resources */,
+				D0D41074283B9EC800479D4A /* monuments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +226,10 @@
 				D0E0024E2822D7CD002B219F /* GalleryCell.swift in Sources */,
 				D0EFAFB7282902F5002537B4 /* MainTabBarController.swift in Sources */,
 				D0E002392822B782002B219F /* GalleryViewController.swift in Sources */,
+				D0D41079283BA48900479D4A /* MonumentModel.swift in Sources */,
 				D0E0024B2822D261002B219F /* UIColor Extention.swift in Sources */,
-				D090ED3A2824E2FE00BFB0B4 /* PublicationViewController.swift in Sources */,
+				D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */,
+				D090ED3A2824E2FE00BFB0B4 /* MonumentViewController.swift in Sources */,
 				D0B5E0F92823D3B0002BAD17 /* GalleryModel.swift in Sources */,
 				D0EFAFB928290343002537B4 /* MapViewController.swift in Sources */,
 				D0E002352822B782002B219F /* AppDelegate.swift in Sources */,

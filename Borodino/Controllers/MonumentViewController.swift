@@ -1,5 +1,5 @@
 //
-//  PublicationViewController.swift
+//  MonumentViewController.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 06.05.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PublicationViewController: UIViewController {
+class MonumentViewController: UIViewController {
     
     private lazy var sharedBarButtonItem: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharedBarButtonPressed))

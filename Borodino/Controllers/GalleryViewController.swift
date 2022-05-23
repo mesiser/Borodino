@@ -11,12 +11,7 @@ class GalleryViewController: UIViewController {
 
     var collectionView: UICollectionView! = nil
     
-    let sampleData = [GalleryModel(image: UIImage(named: K.ImagesTitle.firstImage), description: "Памятник 1-му и 19-му Егерским полкам"),
-                      GalleryModel(image: UIImage(named: K.ImagesTitle.secondImage), description: "Памятник 2-й конной батарее лейб-гвардии Артиллерийской бригады капитана А. Ф. Ралля"),
-                      GalleryModel(image: UIImage(named: K.ImagesTitle.thirdImage), description: "Памятник лейб-гвардии Казачьему полку"),
-                      GalleryModel(image: UIImage(named: K.ImagesTitle.fourthImage), description: "Памятник 7-й пехотной дивизии генерала П. М. Капцевича"),
-                      GalleryModel(image: UIImage(named: K.ImagesTitle.fifthImage), description: "Памятник Нежинскому драгунскому полку")
-    ]
+    let monuments = Bundle.main.decode([Monument].self, from: "monuments.json")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +25,7 @@ class GalleryViewController: UIViewController {
         navigationItem.title = K.NavControllerTitle.gallery_title
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
         
-        navigationController?.navigationBar.setBackgroundImage(UIImage(named: K.ImagesTitle.titleImage)?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
-        //navigationController?.navigationBar.shadowImage = UIImage()
+        
         
         
         if #available(iOS 13.0, *) {
@@ -75,15 +69,29 @@ class GalleryViewController: UIViewController {
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sampleData.count
+        return monuments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath) as! GalleryCell
         
-        cell.galleryImageView.image = sampleData[indexPath.item].image
-        cell.titleLabel.text = sampleData[indexPath.item].description
+        cell.galleryImageView.image = UIImage(named: monuments[indexPath.item].image)
+        cell.titleLabel.text = monuments[indexPath.item].title
+        
+        
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let monumentVC = MonumentViewController()
+        monumentVC.publicationImageView.image = UIImage(named: monuments[indexPath.item].image)
+        monumentVC.titleLabel.text = monuments[indexPath.item].title
+        monumentVC.contentLabel.text = monuments[indexPath.item].content
+        
+        navigationController?.pushViewController(monumentVC, animated: true)
     }
 }
 
