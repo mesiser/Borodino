@@ -13,5 +13,24 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .link
+        
+        setupUIElements()
     }
+}
+
+extension MapViewController {
+    
+    private func setupUIElements() {
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+
+        title = K.NavControllerTitle.map_title
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
+        
+    }
+    
+    
 }

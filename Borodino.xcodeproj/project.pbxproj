@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D090ED3A2824E2FE00BFB0B4 /* MonumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */; };
-		D090ED3C2824E5C100BFB0B4 /* PublicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */; };
-		D090ED3E2824E70700BFB0B4 /* PublicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED3D2824E70700BFB0B4 /* PublicationModel.swift */; };
-		D0B5E0F92823D3B0002BAD17 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B5E0F82823D3B0002BAD17 /* GalleryModel.swift */; };
 		D0D41074283B9EC800479D4A /* monuments.json in Resources */ = {isa = PBXBuildFile; fileRef = D0D41073283B9EC800479D4A /* monuments.json */; };
 		D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41076283BA24300479D4A /* Bundle-Decodable.swift */; };
 		D0D41079283BA48900479D4A /* MonumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41078283BA48900479D4A /* MonumentModel.swift */; };
@@ -29,9 +26,6 @@
 
 /* Begin PBXFileReference section */
 		D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentViewController.swift; sourceTree = "<group>"; };
-		D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationCell.swift; sourceTree = "<group>"; };
-		D090ED3D2824E70700BFB0B4 /* PublicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationModel.swift; sourceTree = "<group>"; };
-		D0B5E0F82823D3B0002BAD17 /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
 		D0D41073283B9EC800479D4A /* monuments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = monuments.json; sourceTree = "<group>"; };
 		D0D41076283BA24300479D4A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		D0D41078283BA48900479D4A /* MonumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentModel.swift; sourceTree = "<group>"; };
@@ -64,9 +58,7 @@
 		D0B5E0F72823D397002BAD17 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D0B5E0F82823D3B0002BAD17 /* GalleryModel.swift */,
 				D0D41078283BA48900479D4A /* MonumentModel.swift */,
-				D090ED3D2824E70700BFB0B4 /* PublicationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,7 +129,6 @@
 				D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */,
 				D0EFAFB828290343002537B4 /* MapViewController.swift */,
 				D0EFAFBA28290352002537B4 /* InfoViewController.swift */,
-				D090ED3B2824E5C100BFB0B4 /* PublicationCell.swift */,
 				D0E0024D2822D7CD002B219F /* GalleryCell.swift */,
 			);
 			path = Controllers;
@@ -222,7 +213,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D090ED3E2824E70700BFB0B4 /* PublicationModel.swift in Sources */,
 				D0E0024E2822D7CD002B219F /* GalleryCell.swift in Sources */,
 				D0EFAFB7282902F5002537B4 /* MainTabBarController.swift in Sources */,
 				D0E002392822B782002B219F /* GalleryViewController.swift in Sources */,
@@ -230,13 +220,11 @@
 				D0E0024B2822D261002B219F /* UIColor Extention.swift in Sources */,
 				D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */,
 				D090ED3A2824E2FE00BFB0B4 /* MonumentViewController.swift in Sources */,
-				D0B5E0F92823D3B0002BAD17 /* GalleryModel.swift in Sources */,
 				D0EFAFB928290343002537B4 /* MapViewController.swift in Sources */,
 				D0E002352822B782002B219F /* AppDelegate.swift in Sources */,
 				D0EFAFBB28290352002537B4 /* InfoViewController.swift in Sources */,
 				D0E002372822B782002B219F /* SceneDelegate.swift in Sources */,
 				D0E002492822D199002B219F /* Constant.swift in Sources */,
-				D090ED3C2824E5C100BFB0B4 /* PublicationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

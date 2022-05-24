@@ -9,28 +9,47 @@ import UIKit
 
 class GalleryViewController: UIViewController {
 
+    // properties
     var collectionView: UICollectionView! = nil
-    
     let monuments = Bundle.main.decode([Monument].self, from: "monuments.json")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settingsNavigationBar()
-        createCollectionView()
+        setupUIElements()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            
+        tabBarController?.tabBar.isHidden = false
         
     }
+    
+}
 
-    private func settingsNavigationBar() {
-        navigationItem.title = K.NavControllerTitle.gallery_title
+//MARK: - Setup UI Elements
+extension GalleryViewController {
+    
+    private func setupUIElements() {
+        setupNavigationBar()
+        createCollectionView()
+        setupSearchBar()
+    }
+    
+    private func setupNavigationBar() {
+        
+//        let titleLabel = UILabel()
+//        titleLabel.text = K.NavControllerTitle.gallery_title
+//        titleLabel.font = UIFont(name: "Avenir", size: 20)
+//        titleLabel.textColor = .black
+        
+        title = K.NavControllerTitle.gallery_title
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
-        
-        
-        
-        
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+//        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
+
+
     }
     
     // Setup CollectionView
@@ -48,24 +67,28 @@ class GalleryViewController: UIViewController {
         
         collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: K.gallery_ID_cell)
         
-        setupCollectionViewConstraints()
+//        if #available(iOS 11.0, *) {
+//
+//            self.collectionView.contentInsetAdjustmentBehavior = .never
+//        }
         
     }
     
-    private func setupCollectionViewConstraints() {
+    private func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Поиск по Галерее"
         
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.tintColor = .black
+        searchController.searchBar.isTranslucent = true
+        
     }
-    
-
 }
 
-//MARK: CollectionViewDelegate, CollectionViewDataSource
+//MARK: - CollectionViewDelegate, CollectionViewDataSource
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -87,7 +110,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let monumentVC = MonumentViewController()
-        monumentVC.publicationImageView.image = UIImage(named: monuments[indexPath.item].image)
+        monumentVC.monumentImageView.image = UIImage(named: monuments[indexPath.item].image)
         monumentVC.titleLabel.text = monuments[indexPath.item].title
         monumentVC.contentLabel.text = monuments[indexPath.item].content
         
@@ -108,5 +131,13 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
+    }
+}
+
+// MARK: - UISearchBarDelegatte
+extension GalleryViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }

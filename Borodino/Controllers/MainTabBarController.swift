@@ -21,8 +21,6 @@ class MainTabBarController: UITabBarController {
         let mapViewController = MapViewController()
         let infoViewController = InfoViewController()
         
-        galleryViewController.navigationItem.largeTitleDisplayMode = .automatic
-        
         let galleryNavigationContoller = UINavigationController(rootViewController: galleryViewController)
         let mapNavigationController = UINavigationController(rootViewController: mapViewController)
         let infoNavigationController = UINavigationController(rootViewController: infoViewController)
@@ -33,4 +31,5 @@ class MainTabBarController: UITabBarController {
         
         setViewControllers([galleryNavigationContoller, mapNavigationController, infoNavigationController], animated: true)
     }
+    
 }

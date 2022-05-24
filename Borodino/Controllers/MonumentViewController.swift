@@ -9,6 +9,7 @@ import UIKit
 
 class MonumentViewController: UIViewController {
     
+    // properties
     private lazy var sharedBarButtonItem: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharedBarButtonPressed))
     }()
@@ -16,10 +17,9 @@ class MonumentViewController: UIViewController {
     lazy var mainScrollView = UIScrollView()
     lazy var upperView = UIView()
     
-    lazy var publicationImageView: UIImageView = {
+    lazy var monumentImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: K.ImagesTitle.firstImage)
         
         return imageView
         
@@ -32,8 +32,17 @@ class MonumentViewController: UIViewController {
         label.numberOfLines = 0
         label.font = UIFont(name: "Avenir", size: 25)
         label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.text = "Памятник 1-му и 19-му Егерским полкам"
 
+        return label
+    }()
+    
+    lazy var contentLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir", size: 17)
+        label.numberOfLines = 0
+        label.textAlignment = .justified
+        label.textColor = .mainBlackColor()
+        
         return label
     }()
     
@@ -45,49 +54,42 @@ class MonumentViewController: UIViewController {
     }()
     
     lazy var goToTheMapButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Посмотреть на Карте", for: .normal)
-        button.titleLabel?.textColor = .white
+        button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir", size: 20)
         button.backgroundColor = .mainBlackColor()
         button.layer.cornerRadius = 5
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.4
-        button.layer.shadowRadius = 10
+        button.layer.shadowRadius = 2
         
         return button
     }()
     
-    lazy var contentLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir", size: 17)
-        label.numberOfLines = 0
-        label.textAlignment = .justified
-        label.text = """
-
-Автором белокаменной часовни с портиками дорического ордера является архитектор Борис Аркадьевич Альберти. По его проекту она была сооружена к 1912 году. Памятник посвящен двум егерским полкам, которые по приказу главнокомандующего 1-й Западной армии Барклая де Толли в решающий момент боя здесь, на правом берегу реки Колочи, были брошены на помощь лейб-егерям. Те только что оставили село Бородино под натиском превосходящих сил противника. Атака французской пехоты была отражена. Противнику, пытавшемуся прорвать оборону, был поставлен мощный заслон.
-
-Над входом в часовню – бронзовый орел с распростертыми крыльями – символ победы. Под ним и на противоположном портике – беломраморные доски с лермонтовскими строками, начертанными золотом. На одной из них: «Не будь на то Господня воля – не отдали б Москвы», на другой – «Умереть мы обещали, и клятву верности сдержали мы в Бородинский бой». Внутри часовни – мозаичное панно «Егеря в Бородинском сражении» работы художника Александра Хлебникова, исполненное в 1981 году.
-"""
-        label.textColor = .mainBlackColor()
-        
-        return label
-    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        createUIElements()
+        setupUIElements()
         
+        tabBarController?.tabBar.isHidden = true
+    
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    @objc private func sharedBarButtonPressed() {
+        print(#function)
     }
+}
+
+// MARK: - Setup UI Elements
+extension MonumentViewController {
     
-    private func createUIElements() {
-        settingsNavigationBar()
+    private func setupUIElements() {
+
+        setupNavigationBar()
         setupScrollViewconstraints()
         setupUpperViewConstraints()
         setupImageViewConstraints()
@@ -97,18 +99,15 @@ class MonumentViewController: UIViewController {
         setupContentLabelConstraints()
     }
     
-    
-// MARK: Setup UI Elements
-    
-    private func settingsNavigationBar() {
-        navigationItem.title = K.NavControllerTitle.description_of_publication_title
+    private func setupNavigationBar() {
+
+        title = K.NavControllerTitle.description_of_publication_title
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
+        
         navigationItem.rightBarButtonItem = sharedBarButtonItem
         sharedBarButtonItem.tintColor = .mainBlackColor()
-    }
-    
-    @objc private func sharedBarButtonPressed() {
-        print(#function)
+        
     }
     
     private func setupScrollViewconstraints() {
@@ -139,14 +138,14 @@ class MonumentViewController: UIViewController {
     }
     
     private func setupImageViewConstraints() {
-        upperView.addSubview(publicationImageView)
-        publicationImageView.translatesAutoresizingMaskIntoConstraints = false
+        upperView.addSubview(monumentImageView)
+        monumentImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            publicationImageView.centerXAnchor.constraint(equalTo: upperView.centerXAnchor),
-            publicationImageView.topAnchor.constraint(equalTo: upperView.topAnchor),
-            publicationImageView.widthAnchor.constraint(equalTo: upperView.widthAnchor),
-            publicationImageView.heightAnchor.constraint(equalToConstant: 250)
+            monumentImageView.centerXAnchor.constraint(equalTo: upperView.centerXAnchor),
+            monumentImageView.topAnchor.constraint(equalTo: upperView.topAnchor),
+            monumentImageView.widthAnchor.constraint(equalTo: upperView.widthAnchor),
+            monumentImageView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
@@ -156,7 +155,7 @@ class MonumentViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: upperView.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: publicationImageView.bottomAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: monumentImageView.bottomAnchor, constant: 50),
             titleLabel.widthAnchor.constraint(equalTo: upperView.widthAnchor, multiplier: 3/4)
         ])
     }
@@ -196,7 +195,6 @@ class MonumentViewController: UIViewController {
             goToTheMapButton.heightAnchor.constraint(equalToConstant: 47)
         ])
     }
-    
     
 }
 
