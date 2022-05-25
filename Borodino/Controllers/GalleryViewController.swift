@@ -12,11 +12,14 @@ class GalleryViewController: UIViewController {
     // properties
     var collectionView: UICollectionView! = nil
     let monuments = Bundle.main.decode([Monument].self, from: "monuments.json")
+    var searchMonuments = [Monument]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUIElements()
+        searchMonuments = monuments
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,8 +83,9 @@ extension GalleryViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Поиск по Галерее"
+        definesPresentationContext = true
         
-        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.searchTextField.textColor = .black
         searchController.searchBar.tintColor = .black
         searchController.searchBar.isTranslucent = true
         
@@ -92,14 +96,16 @@ extension GalleryViewController {
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return monuments.count
+        
+        return searchMonuments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath) as! GalleryCell
         
-        cell.galleryImageView.image = UIImage(named: monuments[indexPath.item].image)
-        cell.titleLabel.text = monuments[indexPath.item].title
+        
+        cell.galleryImageView.image = UIImage(named: searchMonuments[indexPath.item].image)
+        cell.titleLabel.text = searchMonuments[indexPath.item].title
         
         
         return cell
@@ -110,9 +116,9 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let monumentVC = MonumentViewController()
-        monumentVC.monumentImageView.image = UIImage(named: monuments[indexPath.item].image)
-        monumentVC.titleLabel.text = monuments[indexPath.item].title
-        monumentVC.contentLabel.text = monuments[indexPath.item].content
+        monumentVC.monumentImageView.image = UIImage(named: searchMonuments[indexPath.item].image)
+        monumentVC.titleLabel.text = searchMonuments[indexPath.item].title
+        monumentVC.contentLabel.text = searchMonuments[indexPath.item].content
         
         navigationController?.pushViewController(monumentVC, animated: true)
     }
@@ -130,14 +136,27 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
 }
 
-// MARK: - UISearchBarDelegatte
+// MARK: - UISearchBarDelegatte, UISearchResultsUpdating
 extension GalleryViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        
+        guard !searchText.isEmpty else {
+            searchMonuments = monuments
+            collectionView.reloadData()
+            return
+            
+        }
+        
+        searchMonuments = monuments.filter({ monument -> Bool in
+            monument.title.lowercased().contains(searchText.lowercased())
+        })
+        
+        collectionView.reloadData()
     }
+    
 }
