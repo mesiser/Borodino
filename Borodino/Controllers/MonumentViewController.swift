@@ -79,6 +79,12 @@ class MonumentViewController: UIViewController {
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     @objc private func sharedBarButtonPressed() {
         print(#function)
     }
@@ -101,9 +107,12 @@ extension MonumentViewController {
     
     private func setupNavigationBar() {
 
-        title = K.NavControllerTitle.description_of_publication_title
-        navigationController?.navigationBar.tintColor = .black
+        //title = K.NavControllerTitle.description_of_publication_title
+        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
+        
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
         
         navigationItem.rightBarButtonItem = sharedBarButtonItem
         sharedBarButtonItem.tintColor = .mainBlackColor()
