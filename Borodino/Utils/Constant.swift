@@ -13,6 +13,8 @@ struct K {
     static let gallery_ID_cell = "GalleryIDCell"
     static let publication_ID_cell = "PublicationIDCell"
     
+    #warning("Why not camel case? galleryIDCell, etc.")
+
     struct NavControllerTitle {
         static let gallery_title = "Галерея"
         static let map_title = "Карта"

@@ -95,20 +95,45 @@ extension MonumentViewController {
     
     private func setupUIElements() {
 
+        #warning("Лучше делать single responsibility. Сначала добавляешь все вью, потом расставляешь коснтрейнты")
+        
+        view.addSubview(mainScrollView)
+        mainScrollView.translatesAutoresizingMaskIntoConstraints = false
+        #warning("Чтобы не писать десять раз translatesAutoresizingMaskIntoConstraints = false, я бы подумал сделать общий клаcc  и делать translatesAutoresizingMaskIntoConstraints = false в нем и после этого наследовать у него. Но лучше использовать SnapKit :)")
+
+        upperView.addSubview(contentLabel)
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        mainScrollView.addSubview(upperView)
+        upperView.translatesAutoresizingMaskIntoConstraints = false
+
+        upperView.addSubview(monumentImageView)
+        monumentImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        upperView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(footerView)
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+
+        footerView.addSubview(goToTheMapButton)
+        goToTheMapButton.translatesAutoresizingMaskIntoConstraints = false
+        
         setupNavigationBar()
-        setupScrollViewconstraints()
         setupUpperViewConstraints()
         setupImageViewConstraints()
         setupConstraintsForTitleLabel()
         setupButtonConstraints()
         setupFooterViewConstraints()
+        setupScrollViewconstraints()
         setupContentLabelConstraints()
     }
     
     private func setupNavigationBar() {
 
         //title = K.NavControllerTitle.description_of_publication_title
-        navigationController?.navigationBar.tintColor = .white
+        #warning("Надо black, а то ниче не видно 😎")
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont(name: "Avenir", size: 20)!]
         
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -120,22 +145,24 @@ extension MonumentViewController {
     }
     
     private func setupScrollViewconstraints() {
-        view.addSubview(mainScrollView)
-        mainScrollView.translatesAutoresizingMaskIntoConstraints = false
         
+        #warning("I would recommend you to try snap kit for constraints")
+        //The one below👇 you easily could write with snapkit like this:
+        //mainScrollView.snp.makeContstraints {
+        //    $0.top.width.bottom.centerX.equalToSuperview()
+        //}
         
+        #warning("Надо делать topAnchor от safe area, а bottomAnchor от footerView. Иначе скролл вью обрезается")
         NSLayoutConstraint.activate([
             mainScrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainScrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainScrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            mainScrollView.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -20)
         ])
     }
     
     private func setupUpperViewConstraints() {
-        mainScrollView.addSubview(upperView)
-        upperView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             upperView.centerXAnchor.constraint(equalTo: mainScrollView.centerXAnchor),
             upperView.topAnchor.constraint(equalTo: mainScrollView.topAnchor),
@@ -147,9 +174,7 @@ extension MonumentViewController {
     }
     
     private func setupImageViewConstraints() {
-        upperView.addSubview(monumentImageView)
-        monumentImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+ 
         NSLayoutConstraint.activate([
             monumentImageView.centerXAnchor.constraint(equalTo: upperView.centerXAnchor),
             monumentImageView.topAnchor.constraint(equalTo: upperView.topAnchor),
@@ -159,9 +184,7 @@ extension MonumentViewController {
     }
     
     private func setupConstraintsForTitleLabel() {
-        upperView.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+ 
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: upperView.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: monumentImageView.bottomAnchor, constant: 50),
@@ -170,9 +193,7 @@ extension MonumentViewController {
     }
     
     private func setupContentLabelConstraints() {
-        upperView.addSubview(contentLabel)
-        contentLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+ 
         NSLayoutConstraint.activate([
             contentLabel.centerXAnchor.constraint(equalTo: upperView.centerXAnchor),
             contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
@@ -182,9 +203,7 @@ extension MonumentViewController {
     }
     
     private func setupFooterViewConstraints() {
-        view.addSubview(footerView)
-        footerView.translatesAutoresizingMaskIntoConstraints = false
-        
+ 
         NSLayoutConstraint.activate([
             footerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             footerView.widthAnchor.constraint(equalTo: view.widthAnchor),
@@ -194,9 +213,7 @@ extension MonumentViewController {
     }
     
     private func setupButtonConstraints() {
-        footerView.addSubview(goToTheMapButton)
-        goToTheMapButton.translatesAutoresizingMaskIntoConstraints = false
-        
+ 
         NSLayoutConstraint.activate([
             goToTheMapButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 20),
             goToTheMapButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 19),
